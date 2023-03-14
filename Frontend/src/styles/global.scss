@@ -1,7 +1,8 @@
 // https://bit.ly/3aI9YSD - universal box-sizing with inheritance.
 html {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
+
 *,
 *:before,
 *:after {
@@ -16,6 +17,15 @@ body {
   // https://mzl.la/2KnTfHh
   // size/line-height | family
   font: 16px 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /*
