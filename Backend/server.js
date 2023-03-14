@@ -6,7 +6,8 @@ const app = express();
 require('dotenv').config();
 
 const uploadRouter = require('./Routes/Routers/uploadFile');
-const downloadRouter = require("./Routes/Routers/downloadFile");
+const downloadRouter = require('./Routes/Routers/downloadFile');
+const showAllFilesRouter = require('./Routes/Routers/showAllFiles');
 
 app.use(express.json());
 app.use(cors());
@@ -16,6 +17,7 @@ app.use(
   })
 );
 
+app.use(showAllFilesRouter);
 app.use(uploadRouter);
 app.use(downloadRouter);
 
