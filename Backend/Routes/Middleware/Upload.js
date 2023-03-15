@@ -19,6 +19,12 @@ const storage = multer.diskStorage({
 // Set up the multer upload object with the storage engine and other options
 const upload = multer({
   storage: storage,
+  fileFilter: (req, file, callback) => {
+    if (!file.originalname.match(/\.(pdf)$/)) {
+      return callback(new Error('Only PDF files are allowed'));
+    }
+    callback(null, true);
+  },
 }).single('pdf');
 
 const uploadMiddleware = (req, res, next) => {

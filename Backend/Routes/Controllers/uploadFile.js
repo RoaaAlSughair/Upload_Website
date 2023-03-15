@@ -4,7 +4,6 @@ const uploadFile = (req, res) => {
   const pdf = new PDF({
     directory: req.dir,
     filename: req.file.filename,
-    metadata: req.body.metadata,
     contentType: req.file.contentType,
   });
 
