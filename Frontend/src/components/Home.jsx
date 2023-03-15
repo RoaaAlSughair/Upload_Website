@@ -41,7 +41,7 @@ export default function Home() {
                     height="250"
                   />
                   <h4>{el.filename}</h4>
-                  <p>Uploaded on {el.uploadDate}</p>
+                  <small><p className='gray'>Uploaded on {el.uploadDate}</p></small>
                   <a href={el.directory + '/' + el.filename} target='_blank'>
                     <button>View</button>
                   </a>
