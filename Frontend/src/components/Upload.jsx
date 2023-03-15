@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {redirect} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
@@ -47,6 +48,7 @@ export default function Upload() {
       .post(`http://localhost:3000/pdf`, formData)
       .then(() => {
         setMessage('Success!')
+        redirect('/')
       })
       .catch(err => {
         throw err

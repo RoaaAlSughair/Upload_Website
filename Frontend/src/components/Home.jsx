@@ -42,6 +42,9 @@ export default function Home() {
                   />
                   <h4>{el.filename}</h4>
                   <p>Uploaded on {el.uploadDate}</p>
+                  <a href={el.directory + '/' + el.filename} target='_blank'>
+                    <button>View</button>
+                  </a>
                   <a href={el.directory + '/' + el.filename} download>
                     <button>Download</button>
                   </a>
