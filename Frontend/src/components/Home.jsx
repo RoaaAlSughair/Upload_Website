@@ -25,7 +25,7 @@ export default function Home() {
             <button>Add File</button>
           </Link>
         ) : (
-          <button disabled="true">Add File</button>
+          <button disabled>Add File</button>
         )}
       </div>
       {data.length <= 100 ? null : <p>You can only upload up to 100 files.</p>}

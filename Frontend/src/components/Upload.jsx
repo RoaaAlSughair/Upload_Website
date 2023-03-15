@@ -5,6 +5,7 @@ import axios from 'axios'
 export default function Upload() {
   const [file, setFile] = useState({})
   const [message, setMessage] = useState('')
+  const [active, setActive] = useState(false)
 
   const validatePDF = file => {
     const validType = 'application/pdf'
@@ -18,13 +19,11 @@ export default function Upload() {
     e.preventDefault()
     const file = e.dataTransfer.files[0]
     if (validatePDF(file)) {
-      // Enable Submit button
-      console.log('This is a pdf file')
       setFile(file)
+      setActive(true)
       setMessage('Done! Now it is the time to submit it')
     } else {
-      // Disable Submit button and show an error message for the user
-      console.log('Not pdf')
+      setActive(false)
       setMessage('The only acceptable file type is PDF')
     }
   }
@@ -32,13 +31,11 @@ export default function Upload() {
   const handleChange = e => {
     const file = e.target.files[0]
     if (validatePDF(file)) {
-      // Enable Submit button
-      console.log('This is a pdf file')
       setFile(file)
+      setActive(true)
       setMessage('Done! Now it is the time to submit it')
     } else {
-      // Disable Submit button and show an error message for the user
-      console.log('Not pdf')
+      setActive(false)
       setMessage('The only acceptable file type is PDF')
     }
   }
@@ -49,7 +46,6 @@ export default function Upload() {
     axios
       .post(`http://localhost:3000/pdf`, formData)
       .then(() => {
-        console.log('Success')
         setMessage('Success!')
       })
       .catch(err => {
@@ -59,7 +55,9 @@ export default function Upload() {
 
   return (
     <div className="df flex-col w-100">
-      <Link className='mb16' to="/">Back</Link>
+      <Link className="mb16" to="/">
+        Back
+      </Link>
       <div className="wrap tc df flex-col justify-center align-items-center">
         <h1>Upload PDF File Here</h1>
         <form className="df flex-col justify-center align-items-center">
@@ -76,9 +74,15 @@ export default function Upload() {
               <p className="tc">{message}</p>
             </small>
           ) : null}
-          <button type="submit" onSubmit={handleSubmit}>
-            Submit
-          </button>
+          {active ? (
+            <button type="submit" onSubmit={handleSubmit}>
+              Submit
+            </button>
+          ) : (
+            <button disabled type="submit" onSubmit={handleSubmit}>
+              Submit
+            </button>
+          )}
         </form>
       </div>
     </div>
