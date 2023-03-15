@@ -1,9 +1,9 @@
 const express = require('express');
-const { upload } = require('../../DB/GF_Storage');
+const { uploadMiddleware } = require('../Middleware/Upload');
 const { uploadFile } = require('../Controllers/uploadFile');
 
 const uploadRouter = express.Router();
 
-uploadRouter.post('/pdf', upload.single('pdf'), uploadFile);
+uploadRouter.post('/pdf', uploadMiddleware, uploadFile);
 
 module.exports = uploadRouter;
