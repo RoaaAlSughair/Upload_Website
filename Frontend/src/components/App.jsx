@@ -5,7 +5,7 @@ import Home from './Home'
 export default function App() {
   return (
     <Router>
-      <main className='pa48 df justify-center align-items-center'>
+      <main className='ph48 pv16 df justify-center align-items-center'>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/uploadFile" element={<Upload />} />

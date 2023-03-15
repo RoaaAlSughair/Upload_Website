@@ -6,26 +6,43 @@ html {
 *,
 *:before,
 *:after {
+  margin: 0;
+  padding: 0;
   box-sizing: inherit;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-
   // https://mzl.la/2KnTfHh
   // size/line-height | family
   font: 16px 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 body {
+  background-color: aliceblue;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
   display: none;
+}
+
+button {
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #9cadf2;
+  padding: 0.25rem 0.5rem;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a::after {
+  color: black;
 }
 
 /*
