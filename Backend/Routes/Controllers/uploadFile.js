@@ -9,7 +9,10 @@ const uploadFile = (req, res) => {
 
   try {
     pdf.save();
-    res.status(201).send('PDF uploaded successfully');
+    res
+      .status(201)
+      .setHeader('Expires', new Date(Date().now() + 5 * 1000).toUTCString())
+      .send('PDF uploaded successfully');
   } catch (error) {
     res.status(400);
   }
