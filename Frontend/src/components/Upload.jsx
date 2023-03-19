@@ -77,7 +77,7 @@ export default function Upload() {
             </small>
           ) : null}
           {active ? (
-            <button type="submit" onSubmit={handleSubmit}>
+            <button onClick={handleSubmit}>
               Submit
             </button>
           ) : (

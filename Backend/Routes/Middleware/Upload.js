@@ -32,7 +32,7 @@ const uploadMiddleware = (req, res, next) => {
     if (err) {
       res.status(400).send(err.message);
     } else {
-      res.dir = uploadDir;
+      req.dir = uploadDir;
       next();
     }
   });

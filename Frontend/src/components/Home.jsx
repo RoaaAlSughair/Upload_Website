@@ -7,7 +7,7 @@ export default function Home() {
   const [data, setData] = useState([])
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/`)
+      .get(`http://localhost:${process.env.BACKEND_SERVER_PORT}/`)
       .then(res => {
         setData(res.data)
       })
