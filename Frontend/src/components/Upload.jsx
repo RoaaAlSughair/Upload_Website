@@ -48,7 +48,6 @@ export default function Upload() {
       .post(`http://localhost:3000/pdf`, formData)
       .then(() => {
         setMessage('Success!')
-        redirect('/')
       })
       .catch(err => {
         throw err
