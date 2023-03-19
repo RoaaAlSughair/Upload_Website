@@ -7,7 +7,7 @@ export default function Home() {
   const [data, setData] = useState([])
   useEffect(() => {
     axios
-      .get(`http://localhost:${process.env.BACKEND_SERVER_PORT}/`)
+      .get(`http://localhost:3000/`)
       .then(res => {
         setData(res.data)
       })
@@ -41,8 +41,10 @@ export default function Home() {
                     height="250"
                   />
                   <h4>{el.filename}</h4>
-                  <small><p className='gray'>Uploaded on {el.uploadDate}</p></small>
-                  <a href={el.directory + '/' + el.filename} target='_blank'>
+                  <small>
+                    <p className="gray">Uploaded on {el.uploadDate}</p>
+                  </small>
+                  <a href={el.directory + '/' + el.filename} target="_blank">
                     <button>View</button>
                   </a>
                   <a href={el.directory + '/' + el.filename} download>
