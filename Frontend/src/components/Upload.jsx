@@ -43,7 +43,7 @@ export default function Upload() {
 
   const handleSubmit = () => {
     const formData = new FormData()
-    formData.append('file', file)
+    formData.append('pdf', file)
     axios
       .post(`http://localhost:3000/pdf`, formData)
       .then(() => {
