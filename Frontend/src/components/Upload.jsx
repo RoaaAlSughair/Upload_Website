@@ -41,7 +41,8 @@ export default function Upload() {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const formData = new FormData()
     formData.append('pdf', file)
     axios
