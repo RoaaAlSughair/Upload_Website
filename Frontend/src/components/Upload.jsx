@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {redirect} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
@@ -7,6 +7,7 @@ export default function Upload() {
   const [file, setFile] = useState({})
   const [message, setMessage] = useState('')
   const [active, setActive] = useState(false)
+  const navigate = useNavigate()
 
   const validatePDF = file => {
     const validType = 'application/pdf'
@@ -41,18 +42,17 @@ export default function Upload() {
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     const formData = new FormData()
     formData.append('pdf', file)
-    axios
-      .post(`http://localhost:3000/pdf`, formData)
-      .then(() => {
-        setMessage('Success!')
-      })
-      .catch(err => {
-        throw err
-      })
+    axios.post(`http://localhost:3000/pdf`, formData).catch(err => {
+      throw err
+    })
+  }
+
+  const navigateTo = () => {
+    navigate('/')
   }
 
   return (
@@ -77,11 +77,15 @@ export default function Upload() {
             </small>
           ) : null}
           {active ? (
-            <button onClick={handleSubmit}>
+            <button
+              onClick={e => {
+                handleSubmit(e)
+                navigateTo()
+              }}>
               Submit
             </button>
           ) : (
-            <button disabled type="submit" onSubmit={handleSubmit}>
+            <button disabled type="submit">
               Submit
             </button>
           )}
